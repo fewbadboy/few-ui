@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "ignore": [
+    "dist/**",
+    "node_modules/**"
+  ],
+  "watch": ["src"],
+  "ext": "js,ts,tsx",
+  "delay": 2500,
+  "exec": "node server.js"
+}
