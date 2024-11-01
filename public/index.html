@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.3.1",
+        "react-dom": "https://esm.sh/react-dom@18.3.1"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <div>测试界面，F12 查看模块调用测试</div>
+  <script type="module">
+    import React from "react";
+    import ReactDOM from "react-dom";
+    const root = ReactDOM.createRoot(document.getElementById('app'))
+    root.render(React.createElement('h1',{ className: 'red' },'Hello'))
+  </script>
+</body>
+</html>
