@@ -6,16 +6,15 @@ import typescriptPlugin from "@rollup/plugin-typescript"
 import { dts } from "rollup-plugin-dts"
 import autoprefixer from "autoprefixer"
 import postcssPlugin from "rollup-plugin-postcss"
-import terserPlugin from "@rollup/plugin-terser"
+// import terserPlugin from "@rollup/plugin-terser"
 import pkg from './package.json' with { type: 'json' }
 
 export default defineConfig([
   {
-    input: "index.ts",
+    input: "index.tsx",
     output: {
       dir: "dist",
       format: "esm",
-      exports: "named",
       sourcemap: true
     },
     external: [
@@ -27,8 +26,12 @@ export default defineConfig([
       exclude: ["./node_modules/**"]
     },
     plugins: [
-      typescriptPlugin(),
-      nodeResolvePlugin(),
+      typescriptPlugin({
+        tsconfig: './tsconfig.json'
+      }),
+      nodeResolvePlugin({
+        extensions: [".ts", ".tsx", ".js", ".jsx"]
+      }),
       commonjsPlugin(),
       babelPlugin({
         babelHelpers: "bundled",
@@ -46,11 +49,11 @@ export default defineConfig([
         extract: true,
         minimize: false
       }),
-      terserPlugin()
+      // terserPlugin()
     ]
   },
   {
-    input: "types.d.ts",
+    input: "dist/types/index.d.ts",
     output: {
       file: "dist/index.d.ts",
       format: "esm",

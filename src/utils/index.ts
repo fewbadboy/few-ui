@@ -1,9 +1,11 @@
-export default function() {
-  return {
-    name: 'rollup.js!!!!!!'
-  }
-}
+export function log(message: Promise<string>) {
+  return message
+} 
 
-export function DateNow() {
-  return new Date().toLocaleString()
+export default async function() {
+  await import('./some').then(({ default: DefaultExport, DateNow }) => {
+    console.log(DefaultExport(), DateNow())
+  })
+  log(Promise.resolve("First Test")).then(console.log);
+  log(Promise.resolve("This is from Rollup Build!!!")).then(console.log);
 }
