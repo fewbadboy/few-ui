@@ -1,5 +1,5 @@
 {
-  "name": "@fewbadboy/few-ui",
+  "name": "few-ui",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
