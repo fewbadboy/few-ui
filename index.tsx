@@ -1,1 +1,3 @@
-export { default as MyComponent } from "./src/components/MyComponent"
+import "./src/styles/main.scss"
+export { default as MyButton } from "./src/components/MyButton"
+export { default as MyContent } from "./src/components/MyContent"

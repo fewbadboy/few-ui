@@ -4,8 +4,10 @@ import commonjsPlugin from "@rollup/plugin-commonjs"
 import { babel as babelPlugin } from "@rollup/plugin-babel"
 import typescriptPlugin from "@rollup/plugin-typescript"
 import { dts } from "rollup-plugin-dts"
-import autoprefixer from "autoprefixer"
 import postcssPlugin from "rollup-plugin-postcss"
+import tailwindPlugin from "tailwindcss"
+import autoprefixer from "autoprefixer"
+import cssnanoPlugin from "cssnano"
 import terserPlugin from "@rollup/plugin-terser"
 import pkg from './package.json' with { type: 'json' }
 
@@ -43,7 +45,9 @@ export default defineConfig([
       postcssPlugin({
         extensions: [".css", ".scss"],
         plugins: [
-          autoprefixer()
+          tailwindPlugin(),
+          autoprefixer(),
+          cssnanoPlugin()
         ],
         sourceMap: true,
         extract: true,
@@ -58,6 +62,9 @@ export default defineConfig([
       file: "dist/index.d.ts",
       format: "esm",
     },
+    external: [
+      /\.s?css$/
+    ],
     plugins: [
       dts()
     ]
