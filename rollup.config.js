@@ -6,7 +6,7 @@ import typescriptPlugin from "@rollup/plugin-typescript"
 import { dts } from "rollup-plugin-dts"
 import autoprefixer from "autoprefixer"
 import postcssPlugin from "rollup-plugin-postcss"
-// import terserPlugin from "@rollup/plugin-terser"
+import terserPlugin from "@rollup/plugin-terser"
 import pkg from './package.json' with { type: 'json' }
 
 export default defineConfig([
@@ -18,7 +18,7 @@ export default defineConfig([
       sourcemap: true
     },
     external: [
-      ...Object.keys(pkg.dependencies)
+      ...Object.keys(pkg.peerDependencies)
     ],
     watch: {
       buildDelay: 1000,
@@ -49,7 +49,7 @@ export default defineConfig([
         extract: true,
         minimize: false
       }),
-      // terserPlugin()
+      terserPlugin()
     ]
   },
   {

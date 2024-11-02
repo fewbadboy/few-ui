@@ -1,6 +1,11 @@
 import React from "react";
-import { ButtonProps } from "types"
 import handle from "../../utils/index"
+
+export interface ButtonProps {
+  type: "button" | "submit"
+  label: string
+}
+
 
 const Button: React.FC<ButtonProps> = ({ type = 'button', label = 'Default' }) => {
   async function handleClick() {
